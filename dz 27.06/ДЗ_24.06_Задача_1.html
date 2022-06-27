@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const header=document.createElement('header');
+        document.body.append(header);
+        const nav=document.createElement('nav');
+        header.append(nav);
+        const ul=document.createElement('ul');
+        nav.append(ul);
+        ul.className="head-menu";
+        for(let i=1;i<=4;i++){
+            const li=document.createElement('li');
+            li.textContent="page"+ i;
+            ul.append(li);
+        };
+        const main=document.createElement('main');
+        document.body.append(main);
+        main.className="container";
+        const article=document.createElement('article');
+        main.append(article);
+        const h=document.createElement('h1');
+        article.append(h);
+        h.textContent='title';
+        const p=document.createElement('p');
+        article.append(p);
+        p.textContent='content';
+        const aside=document.createElement('aside');
+        main.append(aside);
+        aside.className="sidebar";
+        const ul2=document.createElement('ul');
+        aside.append(ul2);
+        for(let k=1;k<=4;k++){
+            const li2=document.createElement('li');
+            li2.textContent="page"+ k;
+            ul2.append(li2);
+        };
+        const footer=document.createElement('footer');
+        document.body.append(footer);
+        const p2=document.createElement('p');
+        p2.innerHTML="copiraght <strong> text <strong> ";
+        footer.append(p2);
+    </script>
+</body>
+</html>
