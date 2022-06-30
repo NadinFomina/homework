@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form action="" name="my">
+    <input name="first">
+    <button>кнопка для инпута</button>
+    </form>
+    <script>
+        const form=document.forms.my;
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            form.elements.first.value='';
+        })
+    </script> -->
+
+    <!-- 
+    <input name="one">+
+    <input name="two">=
+    <p></p>
+    <input type="checkbox" name="check" id="">
+    <button>click me</button>
+    <script>
+               
+            const one = document.body.querySelector('input[name="one"]');
+            const two = document.body.querySelector('input[name="two"]');
+            const check= document.body.querySelector('input[name="check"]');
+            document.body.querySelector('button').addEventListener('click', () => {
+                const p = document.body.querySelector('p');
+                let a = Number.parseInt(one.value);
+                let b = Number.parseInt(two.value);
+                p.textContent = check.checked ? a + b : a - b;
+
+            }) -->
+
+    <!-- <input type=text name="img">
+            <button>click me</button>
+
+            <script>
+                
+                document.body.querySelector('button').addEventListener('click',()=>{
+                  const input=document.body.querySelector('input');  
+                  const img=document.createElement('img');
+                  img.src=input.value;
+                  document.body.append(img);
+                })
+            </script> -->
+
+
+    <ul></ul>
+    <input name="first" type="text">
+    <button>click me</button>
+    <script>
+
+        document.body.querySelector('button').addEventListener('click',()=>{
+            const input=document.body.querySelector('input');
+            const ul=document.body.querySelector('ul');
+            const li=document.createElement('li');
+            ul.append(li);
+            li.textContent=input.value;
+            input.value='';
+        })
+    </script>
+
+
+
+
+
+
+
+    </script>
+    </form>
+
+
+</body>
+
+</html>

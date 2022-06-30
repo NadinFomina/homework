@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Создайте кнопку, при клике на которую, она будет скрывать сама себя. -->
+    <button>нажми меня и я скроюсь</button>
+    <script>
+        const button=document.querySelector('button');
+        button.addEventListener('click',(e)=>{
+            button.style.display='none';
+        })
+    </script>
+</body>
+</html>

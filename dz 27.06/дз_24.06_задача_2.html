@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      
+    </style>
 </head>
 
 <body>
-    
+
     <script>
-       
+
         createTable(6, 10);
         function createTable(cols, rows) {
             const table = document.createElement('table');
@@ -20,7 +23,7 @@
                 for (let y = 1; y < cols; y++) {
                     const td = document.createElement('td');
                     tr.append(td);
-                    td.textContent = i +"-"+ y;
+                    td.textContent = i + "-" + y;
                 }
                 table.append(tr);
 
@@ -29,6 +32,24 @@
             table.border = 'solid 3px';
 
         }
+       
+        function clicktd(e) {
+            console.log(e.target);
+            if (e.target.tagName == 'TD') {
+               const tr=e.target.closest('tr');
+            Array.from(tr.children).forEach(td=>{
+                if(td!==e.target){
+                    td.style.backgroundColor='red';
+                }
+              })
+
+
+            }
+
+        };
+        const table=document.querySelector('table');
+        table.addEventListener("click", clicktd);
+        console.log(table);
 
     </script>
 </body>

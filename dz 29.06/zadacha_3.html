@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 300px;
+            width: 300px;
+            background-color: blueviolet;
+            position: absolute;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- Создайте div шириной и высотой 300px и добавьте в него 4 кнопки с тектом вверх,
+      влево, вниз, вправо.  Реализуйте функционал сдвига div на 10px при нажатии на кнопку,
+      соответствующую направлению -->
+          <div>
+            <button data-direction="top">top</button>
+        <button>вниз</button>
+        <button>влево</button>
+        <button>вправо</button>
+        </div>
+        <!-- let currentPosition=div.style.left ? div.style.left:0;
+        //     currentPosition=Number.parseInt(currentPosition);
+        //     div.style.left = currentPosition +20 +'px';
+  -->
+      <script>
+        const div=document.body.querySelector('div');
+        const button=document.querySelectorAll('button');
+        div.addEventListener('click',(e)=>{
+            if(e.target.tagName==='TOP'){
+                const direction=e.target.dataset.direction;
+                if(direction==='right'){
+                    const pos=this.style.left? Number.parseInt(this.style.left):0;
+                    this.style.left=pos + 10 +'px'
+                };
+                   
+                }
+                
+               
+            })
+            
+
+      </script>
+
+</body>
+</html>
