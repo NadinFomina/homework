@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+
+        ul {
+            list-style: none;
+            font-size: 36px;
+            margin-left: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Создайте список ul > li из 15 элементов.
+         Заполните каждый цифрой он 1 до 15. Добавите обработчики событий, чтобы
+при клике левой кнопкой мыши цифра в li установливалась исходя из суммы 2 соседних элементов li
+при клике праквой кнопкой мыши цифра в li устанавливалась произведению 2 соседних элементов li -->
+
+    <script>
+        const spisok = document.createElement('ul');
+        document.body.append(spisok);
+        for (let i = 1; i <= 15; i++) {
+            const li = document.createElement('li');
+            li.textContent = i;
+            spisok.append(li);
+            li.style.color='blue';
+        };
+        console.log(spisok);
+        const li=document.querySelectorAll('li');
+       li.addEventListener('click',(event)=>{
+            // const li=document.querySelectorAll('li');
+             li=event.target;
+            event.tagName==='LI';
+
+            const prev = li.previousElementSibling?.textConten;
+            const next = li.nextElementSibling?.textContent;
+            if (!prev && !next) {
+                return;
+            }
+            li.textContent=parseInt(prev.textContent)+parseInt(next.textContent)
+        });
+
+        // spisok.onclick = (event) => {
+        //     const target = event.target;
+        //     target.tagName === 'LI' && mouseClick(target, 'left');
+        // };
+        // spisok.oncontextmenu = (event) => {
+        //     event.preventDefault();
+        //     const target = event.target;
+        //     target.tagName === 'LI' && mouseClick(target, 'right');
+        // };
+        // function mouseClick(elem, operand) {
+        //     const prev = elem.previousElementSibling?.textConten;
+        //     const next = elem.nextElementSibling?.textContent;
+        //     if (!prev && !next) {
+        //         return;
+        //     }
+        //     operand === 'left' && (elem.textContent = parseInt(prev || '0') + parseInt(next || '0'));
+        //     operand === 'right' && (elem.textContent = parseInt(prev || '1') * parseInt(next || '1'));
+        // };
+
+
+
+
+    </script>
+</body>
+
+</html>

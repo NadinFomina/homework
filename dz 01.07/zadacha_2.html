@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Создайте форму
+Добавьте в нее input для ввода url картинки
+Добавьте кнопку input type='submit'
+Добавьте пустой div
+При отправке формы нужно:
+Взять введенный url и вставить в div картинку с этим url
+Если картинка не грузится вывести в div сообщение об ошибке -->
+    <form type="active" name="firstForm">
+        <input type="text" name="img">
+        <input type="submit" name="click">
+        <div></div>
+    </form>
+    <script>
+        let form = document.forms.firstForm;
+        let element = form.elements.click;
+        element.addEventListener('click', (event) => {
+            event.preventDefault();
+            const element = document.body.querySelector('input');
+            const img = document.createElement('img');
+            const div = document.body.querySelector('div');
+            img.src = element.value;
+            div.append(img);
+            img.onerror = function () {
+                alert("Ошибка загрузки " + this.src); // Ошибка загрузки https://example.com/404.js
+            };
+            element.value = '';
+
+
+        })
+
+    </script>
+</body>
+
+</html>
