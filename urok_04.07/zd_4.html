@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- на странице расположено неск форм в них есть инпуты, в инпутах числа
+    Дана кнопка
+    По нажатию на кнопку циклом переберите все формы на странице,
+    затем циклом переберите все инпуты в каждой форме
+     и найдите сумму чисел из всех этих инпутов -->
+     <form>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+     </form>
+     <form>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+     </form>
+     <form>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+     </form>
+     <form>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+     </form>
+<button>Click me</button>
+     <script>
+const numbers=[];
+const Forms=Array.from(document.forms);
+document.body.querySelector('button').addEventListener('click',()=>{
+Forms.forEach(form=>{
+    const inputs=Array.from(form.elements);
+    numbers.push(...inputs.map(input=>Number.parseInt(input.value)));
+    const summa=numbers.reduce((acc,n)=>acc+n,0);
+    allert(summ);
+})})
+     </script>
+</html>

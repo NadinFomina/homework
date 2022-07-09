@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-left: 100px;
+            margin-right: 650px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="name">name</label>
+        <input type="text" id="name" name="name">
+        <label for="age">age</label>
+        <input type="text" id="age" name="age">
+        <label for="password">password</label>
+        <input type="password" id="password" name="password">
+        <label for="confirmPassword">confirmPassword</label>
+        <input type="password" id="confirmPassword" name="confirmPassword">
+        <lable for="remember">remember</lable>
+        <input type="checkbox" id="remember" name="remember">
+        <button class="btn btn-info d-block" type="submit">submit</button>
+
+    </form>
+    <ul>
+
+    </ul>
+    <script>
+        // const butt = document.querySelector('button');
+        const form = document.forms[0];
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const errors = [];
+            const name = this.elements.name;
+            if (name.value.length < 5) {
+                errors.push('Поле name должно быть больше 5 символов')
+            }
+            const age = this.elements.age;
+            if (age.value.includes(' ')) {
+                errors.push('Поле age не должно содержать пробелы')
+            }
+            if (!Number(age.value)) {
+                errors.push('поле age должно содержать только цифры')
+
+            }
+            else if (Number(age.value) < 18) {
+                errors.push('поле age должно быть больше 18 лет')
+            }
+            const password=this.elements.password;
+            const confirmPassword=this.elements.confirmPassword;
+            if(password.value!==confirmPassword.value){
+                errors.push('пароли должны совпадать!!')
+            }
+            const checked=this.elements.remember;
+            if(!checked.checked){
+                errors.push('checkbox не выбран')
+            }
+
+            const ul = document.querySelector('ul');
+            ul.innerHTML = '';
+            const list = errors.map(error => {
+                const li = document.createElement('li');
+                li.textContent = error;
+                return li;
+            })
+            ul.append(...list);
+        })
+    </script>
+</body>
+
+</html>

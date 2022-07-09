@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Дан селект со списком стран
+    Сделайте так, чтобы при выборе страны рядом появился еще селект
+    со списком городов из этих стран -->
+    <!-- <select id="selectTwo">
+        <option value="Russia">Россия</option>
+        <option value="USA">Америка</option>
+        <option value="Canada">Канада</option>
+            </select> -->
+
+    <script>
+        const data = {
+            belarus: ['misk', 'brest', 'grodno'],
+            poland: ['warshawa'],
+            france: ['brest', 'paris'],
+        }
+        const mainSelect=document.createElement('select');
+        const secondSelect=document.createElement('select');
+        document.body.append(mainSelect);
+        document.body.append(secondSelect);
+        secondSelect.hiden=true;
+        const countries=Object.keys(data);
+        countries.forEach(country=>{
+            const option=new Option(country,country);
+            mainSelect.append(option);
+        })
+mainSelect.addEventListener('change',()=>{
+    secondSelect.hidden=false;
+    secondSelect.innerHTML='';
+    const country=mainSelect.value;
+    const cities=data[country];
+    cities.forEach(city=>{
+        const option=new Option(city,city);
+        secondSelect.append(option);
+    })
+})
+        
+
+
+    </script>
+</body>
+
+</html>
