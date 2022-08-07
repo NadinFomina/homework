@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            background-color: rgb(207, 176, 198);
+        }
+        body {
+            border: 2px solid rgb(229, 104, 125);
+            padding: 15px;
+            box-shadow: inset;
+        }
+
+        ul {
+            margin-bottom: 20px;
+
+        }
+
+        li {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: blueviolet;
+            font-size: 16px;
+
+        }
+
+        h3 {
+            margin: 6px;
+        }
+
+        h4 {
+            margin: 8px;
+            margin-bottom: 20px;
+            font-family: cursive;
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        let ul = document.createElement('ul');
+        document.body.append(ul);
+        const e = document.createElement('li');
+        ul.append(e);
+        const k = document.createElement('li');
+        ul.append(k);
+        let today = new Date();
+        e.append(`текущая дата и время- ${today}`);
+        let yaer = today.getFullYear();
+        k.append(`текущий год: ${yaer} год`);
+        let day = today.getDay();
+        let dni = [
+            'Воскресенье',
+            'Понедельник',
+            'Вторник',
+            'Среда',
+            'Четверг',
+            'Пятница',
+            'Суббота'
+        ];
+        const a = document.createElement('li');
+        a.append(day);
+        a.textContent = `текущий день недели: ${day}ой - ${dni[day]}`;
+        ul.append(a)
+        let month = today.getMonth();
+        let m = document.createElement('li');
+        let mesiaz = [
+            'январь',
+            'февраль',
+            'март',
+            'апрель',
+            'май',
+            'июнь',
+            'июль',
+            'август',
+            'сентябрь',
+            'октябрь',
+            'ноябрь',
+            'декабрь'
+        ]
+        m.textContent = `текущий месяц  № ${month} - ${mesiaz[month]}`;
+        ul.append(m)
+        let text1 = document.createElement('h3')
+        text1.textContent = `Задание №2. Узнайте, каким днем недели был 10-го марта 2005 года`;
+        document.body.append(text1)
+        let text2 = document.createElement('h4')
+        let proshlayaData = new Date(2005, 2, 10);
+        let denNedeli = proshlayaData.getDay();
+        text2.textContent = `Ответ: 10-го марта 2005 года: ${denNedeli}ый день недели - ${dni[denNedeli]}`;
+        document.body.append(text2)
+        let text3 = document.createElement('h3')
+        text3.textContent = `Задание №3. Выведите количество дней с 1-го января 1970 года до настоящего момента времени. Результат округлите`;
+        document.body.append(text3)
+        let proshloe = new Date(1970, 0, 1);
+        let kolDni = today.getTime() - proshloe.getTime();
+        let days = Math.floor(kolDni / (1000 * 60 * 60 * 24))
+        let b = document.createElement('h4')
+        b.textContent = `C 1го января 1970 года прошло ${days} дней до сегодняшнего дня`;
+        document.body.append(b)
+        let text4 = document.createElement('h3')
+        text4.textContent = `Задание №4. Выведите количество часов, прошедшее между 1 марта 1988 года и 8 марта 2015 года`;
+        document.body.append(text4)
+        let day1 = new Date(1988, 2, 1);
+        let day2 = new Date(2015, 2, 8);
+        let chas = day2.getTime() - day1.getTime();
+        let shaci = chas / (1000 * 60 * 60)
+        let kolChas = document.createElement('h4');
+        kolChas.textContent = `C 1го марта 1988 года по 8 марта 2015 года прошло ${shaci} часов.`
+        document.body.append(kolChas)
+        let text5 = document.createElement('h3')
+        text5.textContent = `Задание №5. Выведите на экран количество секунд, которое осталось до конца дня.`;
+        document.body.append(text5)
+
+        function getSecondsToTomorrow() {
+            let now = new Date();
+            let hour = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            let totalSecondsToday = (hour * 60 + minutes) * 60 + seconds;
+            let totalSecondsInADay = 86400;
+
+            return totalSecondsInADay - totalSecondsToday;
+        }
+        let secunda = document.createElement('h4');
+        secunda.textContent = `до конца дня осталось ${getSecondsToTomorrow()}  секунд`;
+        document.body.append(secunda)
+        let text6 = document.createElement('h3')
+        text6.textContent = `Задание №6. Преобразуйте массив таким образом, что бы в нем все элементы были уникальными (встречаются лишь один раз)
+         const arr = [1, 2, 3, 1, 2, 5, 6, 3];`;
+        document.body.append(text6)
+        const arr = [1, 2, 3, 1, 2, 5, 6, 3]
+        function unique(arr) {
+            let result = [];
+            for (let i of arr) {
+                if (!result.includes(i)) {
+                    result.push(i);
+                }
+            }
+
+            return result;
+        }
+        let Newarr = document.createElement('h4')
+        Newarr.textContent = `Ответ: уникальный массив будет const arr = [${unique(arr)}]`
+        document.body.append(Newarr)
+
+        let text7 = document.createElement('h3')
+        text7.textContent = `Задание №7. Удалить в массиве все числа, которые повторяются более двух раз const arr = [1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 6, 6, 7, 8 ]`;
+        document.body.append(text7)
+        const arr2 = [1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 6, 6, 7, 8];
+        function removeArr(elem) {
+            const item = elem.reduce((acc, el) => (acc[el] ? acc[el]++ : acc[el] = 1, acc), {});
+            return elem.filter(el => item[el] < 3)
+
+        }
+        let massiv = document.createElement('h4')
+        massiv.textContent = `Ответ:const arr= [${removeArr(arr2)}]`
+        document.body.append(massiv)
+
+        let text8 = document.createElement('h3')
+        text8.textContent = `Задание №8. Удалить из второго массива только те элементы, которые встречаеются в первом массиве  const arr1 = [1, 3, 5];
+          const arr2 = [1, 2, 3, 4, 5, 6];`;
+        document.body.append(text8)
+        let arr3 = [1, 3, 5];
+        let arr4 = [1, 2, 3, 4, 5, 6];
+        const newmassiv = arr4.filter(elem => !arr3.includes(elem));
+        const f = document.createElement('h4')
+        f.textContent = `Ответ: новый массив будет arr=[${newmassiv}]`
+        document.body.append(f)
+        let text9 = document.createElement('h3')
+        text9.textContent = `Задание №9. Строка состоит из слов, разделенных одним или несколькими пробелами и знаками препинания.`;
+        document.body.append(text9)
+        let text10 = document.createElement('h3')
+        text10.textContent = `const str = 'Объектно-ориентированное   программирование (ООП) —   методология программирования, основанная на   представлении программы в виде совокупности    объектов, каждый из которых является   экземпляром определённого класса, а классы    образуют иерархию наследования'.`;
+        document.body.append(text10)
+        let text11 = document.createElement('h3')
+        text11.textContent = `_9.1.Найдите слово наибольшей длины`;
+        document.body.append(text11)
+        const str = 'Объектно-ориентированное   программирование (ООП) —   методология программирования, основанная на   представлении программы в виде совокупности    объектов, каждый из которых является   экземпляром определённого класса, а классы    образуют иерархию наследования'
+        function findLongestWord(str) {
+            return str.split(' ').reduce((a, b) => (b.length > a.length) ? b : a);
+        };
+
+        let newStr = document.createElement('h4')
+        newStr.textContent = `Самое длинное слово - ${findLongestWord(str)}`
+        document.body.append(newStr)
+
+        let text12 = document.createElement('h3')
+        text12.textContent = `_9.2.Определить какая буква в строке встречается чаще всего`;
+        document.body.append(text12)
+
+
+        console.log(newmassiv);
+
+        console.log(days)
+
+        console.log(today)
+        console.log(yaer)
+
+
+    </script>
+</body>
+
+</html>

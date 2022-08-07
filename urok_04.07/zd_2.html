@@ -24,27 +24,27 @@
             poland: ['warshawa'],
             france: ['brest', 'paris'],
         }
-        const mainSelect=document.createElement('select');
-        const secondSelect=document.createElement('select');
+        const mainSelect = document.createElement('select');
+        const secondSelect = document.createElement('select');
         document.body.append(mainSelect);
         document.body.append(secondSelect);
-        secondSelect.hiden=true;
-        const countries=Object.keys(data);
-        countries.forEach(country=>{
-            const option=new Option(country,country);
+        secondSelect.hiden = true;
+        const countries = Object.keys(data);
+        countries.forEach(country => {
+            const option = new Option(country, country);
             mainSelect.append(option);
         })
-mainSelect.addEventListener('change',()=>{
-    secondSelect.hidden=false;
-    secondSelect.innerHTML='';
-    const country=mainSelect.value;
-    const cities=data[country];
-    cities.forEach(city=>{
-        const option=new Option(city,city);
-        secondSelect.append(option);
-    })
-})
-        
+        mainSelect.addEventListener('change', () => {
+            secondSelect.hidden = false;
+            secondSelect.innerHTML = '';
+            const country = mainSelect.value;
+            const cities = data[country];
+            cities.forEach(city => {
+                const option = new Option(city, city);
+                secondSelect.append(option);
+            })
+        })
+
 
 
     </script>

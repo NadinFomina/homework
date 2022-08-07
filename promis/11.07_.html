@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // пишим промис который генерирует число от 0 до 1
+        // если число больше 0.5 вызвать промисс
+        //     const promise = new Promise(function (resolve, reject) {
+        //         const item = Math.random();
+        //         if (item > 0.5) {
+        //             resolve(item);
+        //         }
+        //         else {
+        //             reject(item);
+        //         }
+
+        //         },1000);
+
+        //         promise.then(item => {
+        //             console.log('OK: ',item);
+        //     })
+        //    .catch(item=>{
+        //     console.log('Error: ',item)
+        //    })
+
+
+
+        // пишим код для загрузки картинки, если она не грузится, то вывести ошибку.
+        // используем промисс
+        // function imgs() {
+        //     const promise = new Promise(function (resolve, reject) {
+        //         const img = document.createElement('img');
+        //         img.src = 'https://avatars.mds.yandex.net/i?id=4b670f1b10a585aefae9978d785aac80-5284852-images-thumbs&n=13';
+        //         img.onload = function () {
+        //             resolve(img);
+
+        //         }
+        //         img.onerror=function(){
+        //             reject();
+        //         }
+        //     })
+        //     return promise;
+        // };
+        // imgs().then(img => {
+        //     document.body.append(img)
+        // })
+        // .catch(error=>{
+        //     alert('ERROR')
+        // })
+
+
+        // делаем массив картинок, проходимся по массиву forEch и передаем туда url
+
+        const image = [
+            'https://avatars.mds.yandex.net/i?id=4b670f1b10a585aefae9978d785aac80-5284852-images-thumbs&n=13',
+            'https://avatars.mds.yandex.net/i?id=80284ce632199f18e22fb131e1578022-5734463-images-thumbs&n=13',
+            'https://avatars.mds.yandex.net/i?id=47c7b9ac966985d1a8dea0e040b4d166-5523609-images-thumbs&n=13'
+        ];
+        function loadImages(url) {
+            return new Promise((res, rej) => {
+                const image = new Image();
+                image.src = url;
+                image.addEventListener('load', function () {
+                    res(this)
+                })
+                image.addEventListener('error', rej);
+
+            })
+        }
+
+        const imagePromises = image.map(img => loadImages(img));
+        Promise.all(imagePromises)
+            .then(img => {
+                img.forEach(img => document.body.append(img));
+            })
+            .catch(() => alert('error'));
+
+    </script>
+</body>
+
+</html>

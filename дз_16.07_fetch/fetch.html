@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <table class="table">
+        <thead>
+            <tr name="trHead">
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table> -->
+    <script>
+        const delay = ms => {
+            return new Promise(r => setTimeout(() => r(), ms))
+        }
+        const url = 'https://dummyjson.com/users';
+        async function todos() {
+            console.log('work fetch method....')
+            try {
+                await delay(2000)
+                const response = await fetch(url)
+                const data = await response.json()
+                console.log('Info:', data)
+
+                
+
+                // let infoU = data.users;
+                // infoU.forEach((el, i) => {
+                //     const user = infoU[i]
+                //     let a = Object.keys(user)
+                //     let b = Object.values(user)
+                //     const table = document.body.querySelector('table')
+                //     const row1 = document.body.querySelector('tr')
+                //     const th = document.body.querySelectorAll('th')
+                    // table.append(row1)
+                    // row1.append(th)
+                    // const arrKeys = Object.keys(user);
+                    //                     a.forEach((e)=>{
+                    // console.log(e)
+                    //                     })
+
+
+                    // console.log(row1);
+                    // console.log(arrKeys);
+                //     console.log(a)
+                // })
+
+
+
+                // for (let i = 0; i < user.lenght; i++) {
+                //    th.textContent[i] = arrKeys[i];
+
+                //    console.log(th.textContent)
+
+                // }
+
+
+            } catch (e) {
+                console.error(e)
+            }
+
+        }
+        todos()
+
+
+
+
+    </script>
+</body>
+
+</html>

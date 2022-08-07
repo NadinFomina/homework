@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+    <form type="active" name="promiseForm">
+        <input type="text" name="imgs">
+        <input type="text" name="name">
+        <input type="textarea" name="message">
+        <button type="submit">click me</button>
+
+    </form>
+    <script>
+        fetch('http://192.168.0.200:3000/messages')
+            .then(response => response.json())
+            .then((data) => {
+                data.forEach(element => {
+                    let list = document.createElement('li');
+                    list.textContent = element.name;
+                    let ul = document.querySelector('ul');
+                    ul.append(list)
+                    let imgs = document.createElement('img');
+                    imgs.src = element.img;
+                    list.append(imgs);
+                    let message = document.createElement('message');
+                    message.textContent = element.message;
+                    list.append(message);
+
+                })
+
+            })
+        const forms = document.forms.promiseForm;
+        let input1 = form.elements[imgs];
+        let input2 = form.elements[name];
+        let input3 = form.elements[message];
+        let data = {
+            name: input2.value,
+            message: input3.value,
+            img: input1.value,
+        };
+        let response = fetch('/article/fetch/post/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+        });
+
+        let result = response.json();
+        alert(result.message);
+
+
+    </script>
+</body>
+
+</html>

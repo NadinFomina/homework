@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const myBirthday = new Date(1987, 1, 10)
+        console.log(myBirthday);
+        let time = myBirthday.getTime();
+        console.log(time);
+        let today = Date.now();
+        console.log(today);
+        let r = today - time;
+        console.log(r);
+        let days = r / (1000 * 60 * 60 * 24);
+        console.log(days);
+        let a = time + (1000 * 60 * 60 * 24) * 20000;
+        console.log(a);
+        let b = new Date(a);
+        console.log(b);
+        let dni = [
+            'Воскресенье',
+            'Понедельник',
+            'Вторник',
+            'Среда',
+            'Четверг',
+            'Пятница',
+            'Суббота'
+        ];
+        let date = new Date(1, 0, 1);
+        let ddd = date.setFullYear(1)
+        console.log(ddd);
+        console.log(date.toLocalDateString('Ru_ru', { weekday: 'long' }));
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>
