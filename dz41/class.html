@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Реализуйте функции конструктор для Student и Aspirant, аспирант отличается от студента наличием некой
+        // научной работы.
+        // Student содержит свойства:
+        // firstName
+        // lastName
+        // group
+        // averageMark (содержащую среднюю оценку).
+
+        // Aspirant имеет дополнительное свойство work
+
+        // Создать метод getScholarship() для Student, который возвращает сумму стипендии. 
+        //Если средняя оценка студента больше или равна 5, то сумма 100, иначе 80.
+        // Переопределить этот метод в Aspirant. Если средняя оценка аспиранта равна 5, то сумма 200, иначе 180.
+        // Создать несколько объектов типа Student и Aspirant. Создать массив содержащий объекты Student и Aspirant. 
+        //Вызвать метод getScholarship() для каждого элемента массива.
+
+        class Student {
+            constructor(firstName, lastName, group, averageMark) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.group = group;
+                this.averageMark = averageMark;
+            }
+            getScholarship() {
+                return this.averageMark === 5 ? 100 : 80;
+            }
+
+        }
+        class Aspirant extends Student {
+            constructor(firstName, lastName, group, averageMark, work) {
+                super(firstName, lastName, group, averageMark);
+                this.work = work;
+            }
+            getScholarship() {
+                return super.getScholarship() + 100;
+            }
+        }
+        const people = 
+        [new Student('Nadin', 'Fomina', 'A5', 5),
+        new Student('Nikolai', 'Kozlov', 'C3', 4),
+        new Student('Alla', 'Fox', 'C3', 5),
+        new Aspirant('Alex', 'Fomin', 'B9', 5, 'Guru'),
+        new Aspirant('Olga', 'Lissabon', 'D3', 3, 'Midle'), ];
+       
+
+     people.forEach(people => console.log(`${people.firstName} получит стипендию в размере  ${ people.getScholarship()} `));
+
+
+    </script>
+</body>
+
+</html>
