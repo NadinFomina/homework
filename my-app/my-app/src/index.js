@@ -1,17 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const express = require('express')
+const app = express()
+const port = 3000
+const bodyParser = require('body-parser');
+const {faker} = require('@faker-js/faker');
+const lodash = require('lodash');
+const cors = require('cors')
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+app.use(cors())
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const posts = [];
+for (let i = 1; i < 35; i++) {
+    posts.push({
+        id: i,
+        text: faker.lorem.paragraph(),
+        image: faker.image.image(),
+        title: faker.lorem.words(),
+    })
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+app.get('/posts', (req, res) => {
+    const page = req.query.page || 1;
+    const chunks = lodash.chunk(posts, 10);
+    return res.json(chunks[page-1]);
+})
+app.get('/posts/:id', (req, res) => {
+    const id = req.params['id'];
+    const post = lodash.cloneDeep(posts.find( p=> p.id == id ));
+    post.text = faker.lorem.paragraphs(10, '\n');
+    return res.json(post);
+})
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
+//http://192.168.0.157:3000/posts
+//http://192.168.0.157:3000/posts/3
