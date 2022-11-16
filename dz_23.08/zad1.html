@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: fit-content;
+            margin: 50px auto;
+            border: 3px solid #653197;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #5f2b64;
+            padding: 5px;
+            cursor: pointer;
+        }
+tr:nth-child(2n){
+    background-color: #ab7fd4;
+
+}
+tr{
+    background-color: rgb(183, 110, 187);
+}
+
+        
+
+    </style>
+   
+</head>
+
+<body>
+    <!--Написать функцию, которая строит таблицу n (кол-во столбцов) на k (кол-во строк), используя Javascript. 
+        В каждую ячийку записать текст типа 'n - k'.-->
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        class Table extends React.Component {
+            constructor(props) {
+                super(props);
+                this.template = Array.from({ length: this.props.row },
+                    (tr, r) => Array.from({ length: this.props.col },
+                        (td, k) => ({ text: `${r + 1}-${k + 1}` })));
+                this.state = { template: this.template };
+                
+
+            }
+
+            render() {
+                return (
+                    <table>
+                        <tbody>
+                            {this.state.template.map((row,index) =>
+                                <tr key={index}>
+                                    {row.map((cell, b) =>
+                                        <td
+                                            key={b}>
+
+                                        
+                                            {cell.text}
+                                        </td>)}
+                                </tr>)}
+                        </tbody>
+                    </table>
+                )
+            }
+
+        }
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<React.Fragment>
+            <Table row='10' col='10' />
+        </React.Fragment>)
+
+    </script>
+
+</body>
+
+</html>

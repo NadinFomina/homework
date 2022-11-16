@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .tetris {
+            display: grid;
+            grid-template-columns: repeat(7, 50px);
+            grid-template-rows: repeat(12, 50px);
+            list-style-type: none;
+            margin-top: 50px;
+        }
+
+        .bl {
+            background-color: rgb(45, 45, 243);
+            border-top: 3px solid rgb(88, 88, 230);
+            border-left: 3px solid rgb(99, 99, 214);
+            border-right: 3px solid rgb(44, 44, 97);
+            border-bottom: 3px solid rgb(44, 44, 97);
+        }
+
+        .lb {
+            background-color: aquamarine;
+            border-top: 3px solid rgb(36, 238, 238);
+            border-left: 3px solid rgb(47, 177, 182);
+            border-right: 3px solid rgb(4, 92, 87);
+            border-bottom: 3px solid rgb(4, 92, 87);
+        }
+
+        .rd {
+            background-color: rgb(248, 91, 91);
+            border-top: 3px solid rgb(233, 54, 54);
+            border-left: 3px solid rgb(233, 54, 54);
+            border-right: 3px solid rgb(145, 54, 54);
+            border-bottom: 3px solid rgb(145, 54, 54);
+        }
+
+        .ye {
+            background-color: rgb(253, 253, 133);
+            border-top: 3px solid rgb(230, 226, 28);
+            border-left: 3px solid rgb(230, 226, 28);
+            border-right: 3px solid rgb(128, 119, 3);
+            border-bottom: 3px solid rgb(128, 119, 3);
+        
+        }
+
+        .or {
+            background-color: orangered;
+            border-top: 3px solid rgb(238, 148, 31);
+            border-left: 3px solid rgb(238, 148, 31);
+            border-right: 3px solid rgb(172, 98, 3);
+            border-bottom: 3px solid rgb(172, 98, 3);
+        }
+
+        .gr {
+            background-color: green;
+            border-top: 3px solid rgb(57, 199, 14);
+            border-left: 3px solid rgb(57, 199, 14);
+            border-right: 3px solid rgb(9, 66, 2);
+            border-bottom: 3px solid rgb(9, 66, 2);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="tetris">
+        <li class="bl"></li>
+        <li class="lb"></li>
+        <li class="lb"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+
+        <li class="bl"></li>
+        <li class="lb"></li>
+        <li class="bl"></li>
+        <li class="bl"></li>
+        <li class="rd"></li>
+        <li class="rd"></li>
+        <li class="gr"></li>
+
+        <li class="bl"></li>
+        <li class="lb"></li>
+        <li class="bl"></li>
+        <li class="rd"></li>
+        <li class="rd"></li>
+        <li class="gr"></li>
+        <li class="gr"></li>
+
+        <li class="bl"></li>
+        <li class="gr"></li>
+        <li class="bl"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="or"></li>
+        <li class="gr"></li>
+
+        <li class="gr"></li>
+        <li class="gr"></li>
+        <li class="rd"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="or"></li>
+        <li class="or"></li>
+
+        <li class="gr"></li>
+        <li class="bl"></li>
+        <li class="rd"></li>
+        <li class="rd"></li>
+        <li class="rd"></li>
+        <li class="lb"></li>
+        <li class="or"></li>
+
+        <li class="bl"></li>
+        <li class="bl"></li>
+        <li class="ye"></li>
+        <li class="lb"></li>
+        <li class="lb"></li>
+        <li class="lb"></li>
+        <li class="bl"></li>
+
+        <li class="bl"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="rd"></li>
+        <li class="rd"></li>
+        <li class="bl"></li>
+
+        <li class="gr"></li>
+        <li class="gr"></li>
+        <li class="lb"></li>
+        <li class="lb"></li>
+        <li class="rd"></li>
+        <li class="rd"></li>
+        <li class="bl"></li>
+
+        <li class="gr"></li>
+        <li class="lb"></li>
+        <li class="lb"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="ye"></li>
+        <li class="bl"></li>
+
+
+        <li class="gr"></li>
+        <li class="or"></li>
+        <li class="bl"></li>
+        <li class="bl"></li>
+        <li class="ye"></li>
+        <li class="or"></li>
+        <li class="or"></li>
+
+
+        <li class="or"></li>
+        <li class="or"></li>
+        <li class="or"></li>
+        <li class="bl"></li>
+        <li class="bl"></li>
+        <li class="or"></li>
+        <li class="or"></li>
+
+    </ul>
+
+
+
+    </div>
+</body>
+
+</html>

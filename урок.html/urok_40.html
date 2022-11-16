@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Создать класс машина, имеющий марку, число цилиндров, мощность.Определить конструктор и функцию печати.
+    Создать производный класс-грузовики,имеющий грузоподьемность кузова.
+    Определить конструктор, функцию печати.Определить функции переназначения марки и грозоподьемности -->
+    <script>
+        class Auto {
+            constructor(classauto, marka, silindr,power){
+                this.classauto =classauto;
+                this.marka = marka;
+                this.silindr=silindr;
+                this.power=power;
+
+            }
+           print(){console.log(this.classauto, this.marka,this.silindr,this.power)}
+        }
+
+        let dusAuto = new Auto( 'a', 'd', 'y', "z")
+        dusAuto.print()
+        
+        class GrozovoiAuto extends Auto{
+            constructor(classauto, marka, silindr,power,cargo){
+            super(classauto, marka, silindr,power);
+                this.cargo =cargo;
+               
+            }
+            print(){console.log(this.classauto, this.marka,this.silindr,this.power,this.cargo)}
+        }
+
+        let gruz=new GrozovoiAuto('a', 'd', 'y', "z", "u")
+        gruz.print()
+    </script>
+    <!-- реализуйте функции для Student и Aspirant  -->
+</body>
+
+</html>

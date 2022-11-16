@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <style>
+        div {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Дан ul в нем несколько li.Под ул сделайте кнопку,по нажатию на которую в конец ул 
+        будет добавляться новый ли с текстом
+     "пункт".Сделайте так, чтобы при клике на каждый ли, ему в конец добавился '!'. 
+    Это должно работать и для вновь добавленных li/ -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Spisok extends React.Component {
+            constructor() {
+                super();
+                const items = [];
+                for (let i = 0; i < 10; i++) {
+                    items.push(Math.random())
+                }
+                this.state = { items };
+
+            }
+
+            push() {
+                this.setState(state => ({
+                    items: [...state.items, Math.random()]
+
+                }
+                ))
+            }
+            change(index){
+                const items=this.state.items.map((item,i)=> i===index? item + '!' : item)
+            this.setState({items})
+                                   
+            }
+
+            render() {
+                return (
+                    <div>
+                        <ul>
+                            {this.state.items.map((item,index)=>
+                                <li
+                                key={index}
+                                onClick={()=>this.change(index)}>
+                           {item}
+                           </li>)
+                            }
+                        </ul>
+                        <button onClick={() => this.push()}>Push</button>
+                    </div>
+                )
+            }
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Spisok />)
+
+    </script>
+
+</body>
+
+</html>

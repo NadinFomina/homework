@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+class List extends React.Component {
+    constructor(props) {
+        super(props);
+        
+    }
+   
+    render() {
+        return (
+            <ul>
+                {this.props.data.map( (item, index) => <Element  key={index} data={item}/>)}
+            </ul>
+        );
+    }
+}
+class Element extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    
+    render() {
+        return (
+            <li>{this.props.data} </li>
+        );
+    }
+}
+
+class TodoList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {items:[
+                'item 1',
+                'item 2',
+                'item 3'
+            ]}
+        this.addItem = this.addItem.bind(this);
+        // this.superSuperRemove = this.superSuperRemove.bind(this);
+    }
+    addItem(item){
+        this.setState(state => ({items: [...state.items, item]}))
+        console.log(item);
+    }
+    // superSuperRemove(item){
+    //     this.setState(state => ({items: state.items.filter(e => e !== item)}))
+    // }
+    render() {
+        return (
+            <React.Fragment>
+                <List data={this.state.items}/>
+                
+            </React.Fragment>
+        );
+    }
+}
+// class Form extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {item:''}
+
+//     }
+//     addItem(e){
+//         e.preventDefault();
+//         this.props.onAddItem(this.state.item)
+//         this.setState({item:''})
+//     }
+//     render() {
+//         return (
+//             <form onSubmit={(e)=>this.addItem(e)}>
+//                 <input
+//                     type="text"
+//                     value={this.state.item}
+//                     onChange={(e) => this.setState({item:e.target.value})}
+//                 />
+//                 <input type="submit" value="Send"/>
+//             </form>
+//         );
+//     }
+// }
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <TodoList/>
+);
+    </script>
+</body>
+
+</html>

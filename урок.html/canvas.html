@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1100" height="1500"></canvas>
+    <script>
+        const canvas = document.body.querySelector('canvas')
+        const ctx = canvas.getContext('2d');
+        tree(200,200)
+        for( let count=1;count<=10;count++){
+            tree(count*200,200)
+        }
+        function tree(x){
+            for(let count=1; count<=3;count++){
+                triangle(x,count*50)
+            }
+        }
+        function triangle(x,y){
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+100,y+50);
+            ctx.lineTo(x-100,y+50);
+            ctx.lineTo(x,y)
+            ctx.fill()
+
+        }
+        function stvol(x,y){
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(x+300,y+150);
+            ctx.lineTo(x-300,y+150);
+          
+            ctx.fill()
+
+        }
+
+    </script>
+</body>
+
+</html>

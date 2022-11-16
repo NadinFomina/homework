@@ -1,0 +1,32 @@
+li {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    box-shadow: 9px -1px 21px 11px rgba(56, 55, 56, 0.2);
+    padding: 15px;
+   
+   }
+
+
+ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+button{
+    width: 250px;
+    height: 100px;
+    box-shadow: 9px -1px 21px 11px rgba(56, 55, 56, 0.2);
+    font-size: 30px;
+}
+section{
+    font-size: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+    text-align: left;
+}
+

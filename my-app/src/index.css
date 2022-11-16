@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,46 +10,30 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+body {
+  margin: 0;
+  min-width: 250px;
+}
+* {
+  box-sizing: border-box;
 }
 
-.divButton {
-  background-color: blue;
+ol {
+  margin: 0;
+  padding: 0;
 }
-
-.slider {
-  overflow: hidden;
+ol li {
+  cursor: pointer;
   position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: rgb(34, 211, 185);
+  font-size: 18px;
+  width: 250px;
 }
-
-.slide-list {
-  display: flex;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-
-.slide {
-  flex: 1 0 100%;
-  position: relative;
-}
-
-.slide-image {
-  display: flex;
-  margin: 0 auto;
-  max-height: 300px;
-  width: 100%;
-  object-fit: contain;
-}
-
-.slide-title {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.item {
-  color: black;
-  font-family: 'Times New Roman', Times, serif;
-
+ol li:nth-child(odd) {
+  background: #1178c290;
 }
 
 .task {
@@ -58,33 +42,30 @@ code {
 
 }
 
-/* #root {
-  margin: 100px 100px;
-  padding: 20px 20px;
-  background-color: rgb(220, 255, 196);
-  border: 2px grey;
-  border-radius: 5px;
-} */
 
-.spisok-del {
+/* .spisok-del {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .button-del {
-  /* border-radius: 20%;
-  padding: 10px;
-  margin: 0px;
-  background-color: rgb(0, 195, 255);
-  width: 25px;
-  height: 25px; */
   cursor: pointer;
-  /* text-align: center; */
 }
-
-.spisok-del li {
+*/
+li {
+  width: 100%;
   display: flex;
-  gap: 10px 10px;
-  align-items:flex-end;
+  justify-content: space-between;
+} 
+li button::before{
+  content: 'x';
+}
+ol li:hover {
+  background: rgba(128, 249, 6, 0.74);
+}
+ol li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
 }

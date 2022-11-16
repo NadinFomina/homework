@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <style>
+        div {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Создайте список ul>li  из 15 эл-в. Заполните каждый цифрой от 1 до 15.
+    добавьте обработчики событий, чтобы:
+при клике левой кнопки мыши цифра в li установилась исходя из суммы 2 соседних элементов li
+при клике правой кнопки мыши цифра в li устанавливалась произведению 2 соседних элементов li -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Spisok extends React.Component {
+            constructor() {
+                super();
+                const items = [];
+                for (let i = 1; i <= 15; i++) {
+                    items.push(i)
+
+                }
+                this.state = { items };
+            }
+
+            summa(index) {
+                let first = index !==0 ? this.state.items[index - 1] : 0;
+                let second = index !== this.state.items.length - 1 ? this.state.items[index + 1] : 0;
+                const items = this.state.items.map((item, i) => i === index ? first + second : item);
+                this.setState({ items });
+            }
+            multiplay(event,index) {
+                let first = index !== 0 ? this.state.items[index - 1] : 0;
+                let second = index !== this.state.items.length - 1 ? this.state.items[index + 1] : 1;
+                const items = this.state.items.map((item, i) => i === index ? first * second : item);
+                this.setState({ items });
+                event.preventDefault();
+
+            }
+
+            render() {
+                return (
+                    <div>
+                        <ul>
+                            {this.state.items.map((item, index) =>
+                                <li
+                                    key={index}
+                                    onClick={() => this.summa(index)}
+                                    onContextMenu={() => this.multiplay(event,index)}>
+                                    {item}
+                                </li>)
+                            }
+                        </ul>
+                        
+                    </div>
+                )
+            }
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Spisok />)
+
+    </script>
+
+</body>
+
+</html>

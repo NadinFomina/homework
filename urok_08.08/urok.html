@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!-- /проверьте является ли данный массив возрастающим или убывающим/ -->
+   <script>
+    const  arr=[1,2,3,4,5,6,7,8,9]
+    function ascDscArray(arr) {
+    for (var i=1; i < arr.length-1; i++) {
+        if (arr[i-1] < arr[i]) return "массив возрастающий";
+        if (arr[i-1] > arr[i]) return "массив убывающий";
+        else return "no";
+    }
+}
+const result=ascDscArray(arr)
+console.log(result)
+// в данном массиве найдите два наименьших эл-та
+arr.sort((a,b)=>a-b)
+let minelement=`${arr[0]} и ${arr[1]}`
+console.log(minelement);
+// определите если в массиве повторяющиеся эле-ты
+const a = [1,2,3,3,4,4,5,5,6,7,8,8,9,10,11,12];
+
+// function getRepetitives(arr) {
+//   const itemsDuplicates = {}
+  
+//   arr.forEach(item => {
+//     itemsDuplicates[item] = itemsDuplicates.hasOwnProperty(item) 
+//       ? itemsDuplicates[item] + 1
+//       : 1 
+//   })
+  
+//   const repetitives = Object.entries(itemsDuplicates).filter(([ k ,v ]) => v > 1).map(([k]) => k)
+  
+//   return repetitives
+// }
+
+// console.log(getRepetitives(a))
+
+const b=new Set(a)
+if(a.length==b.length){
+    console.log('в массиве нет повторений')
+}else {
+    console.log('в массиве есть повторения');
+}
+
+
+   </script>
+</body>
+</html>

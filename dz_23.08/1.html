@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        import React from 'react';
+        import 'bootstrap/dist/css/bootstrap.css';
+        import { Grid, Row, Col } from 'react-bootstrap';
+
+        class ExperienceRow extends React.Component {
+            render() {
+                let workItemOne = this.props.workItemOne;
+                let workItemTwo = this.props.workItemTwo;
+
+                if (workItemTwo === null) {
+                    return (
+                        <Row>
+                            <Col md={6}>
+                                {workItemOne.summary}
+                            </Col>
+                        </Row>
+                    );
+                }
+                else {
+                    return (
+                        <Row>
+                            <Col md={6}>
+                                {workItemOne.summary}
+                            </Col>
+                            <Col md={6}>
+                                {workItemTwo.summary}
+                            </Col>
+                        </Row>
+                    );
+                }
+            }
+        };
+
+        export default class Experience extends React.Component {
+
+            populateExperienceRows(data) {
+                console.log("get that exp");
+                console.log(this.props);
+
+                let length = data.length;
+                let rows = [];
+
+                for (let i = 0; i < length; i += 2) {
+                    if (i === length - 1) {
+                        console.log("two elements");
+                        rows.push(<ExperienceRow workItemOne={data[i]} workItemTwo={null} />);
+                    }
+                    else {
+                        console.log("one element");
+                        rows.push(<ExperienceRow workItemOne={data[i]} workItemTwo={data[i + 1]} />);
+                    }
+                }
+
+                console.log(rows);
+                return rows;
+            };
+
+            render() {
+                /*
+                let data = [{"summary":"helloworld"},
+                            {"summary":"what is this" },
+                            {"summary":"Something something" }
+                           ];
+                           */
+                let getExpRows = this.populateExperienceRows(this.props.experienceData);
+                return (
+                    <div>
+                        <Grid>
+                            <h2>Experience</h2>
+                        </Grid>
+                        <Grid>
+                            {getExpRows}
+                        </Grid>
+                    </div>
+                );
+            }
+
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #button {
+            width: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class List extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    element: [],
+                    newElemnt: "",
+                };
+                this.handelClick = this.handelClick.bind(this);
+                this.clickSubmit = this.clickSubmit.bind(this);
+
+            }
+            handelClick(event) {
+                this.setState({
+                    newElement: event.target.value,
+
+                });
+
+
+            }
+            clickSubmit(event){
+                event.preventDefault();
+                const element =this.state.element;
+                element.push(this.state.newElement);
+                this.setState({newElement:''});
+                this.setState({element});
+               
+            }
+            render() {
+                return (
+                    <div>
+                        <ul>
+                            {this.state.element.map((el, index) =>
+                                <li key={index}>
+
+                                    {el}
+                                </li>)}
+                        </ul>
+                        <form onSubmit={this.clickSubmit} >
+
+                            <label>
+
+                                <input type="text"
+                                    value={this.state.newElement}
+                                    onChange={this.handelClick} />
+                            </label>
+
+                            <input id="button" type="submit" value="Add" />
+                        </form>
+                        <p>{this.state.summ}</p>
+
+                    </div>
+                );
+
+            }
+        }
+
+        class MyInput extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    first: 0,
+                    second: 0,
+                    summ: 0,
+                    flag: false,
+                };
+
+                this.handelSecondChange = this.handelSecondChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+                this.handleCheck = this.handleCheck.bind(this);
+            }
+            handleFirstChange(event) {
+                this.setState({
+                    first: Number.parseInt(event.target.value),
+
+                });
+
+            }
+            handelSecondChange(event) {
+                this.setState({
+                    second: Number.parseInt(event.target.value),
+
+                });;
+            }
+            handleSubmit(event) {
+
+
+                if (this.state.flag) {
+                    const summ = (this.state.first + this.state.second)
+                    this.setState({ summ })
+
+                }
+                else {
+                    const summ = (this.state.first - this.state.second)
+                    this.setState({ summ })
+                }
+
+                event.preventDefault()
+            }
+            handleCheck(event) {
+                this.setState({ flag: event.target.checked })
+            }
+            render() {
+                return (
+                    <div>
+                        <form onSubmit={this.handleSubmit} >
+                            <label>
+                                First Number:
+                                <input type="number"
+                                    value={this.state.first}
+                                    onChange={this.handelFirstChange} />
+                            </label>
+                            <label>
+                                Second Number:
+                                <input type="number"
+                                    value={this.state.second}
+                                    onChange={this.handelSecondChange}
+                                />
+                            </label>
+                            < input type="checkbox"
+                                onChange={this.handleCheck} />
+                            <input id="button" type="submit" value="Add" />
+                        </form>
+                        <p>{this.state.summ}</p>
+
+                    </div>
+                );
+
+            }
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<React.Fragment>
+            <MyInput />
+            <List />
+        </React.Fragment>)
+
+    </script>
+</body>
+
+</html>

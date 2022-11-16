@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script defer src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <style>
+        /* form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #button {
+            width: 100px;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class MyInput extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    url: "",
+                    img: "",
+                    newImg:"",
+                    error:"",
+                };
+                this.handleChange = this.handleChange.bind(this);
+                this.onSubmit = this.onSubmit.bind(this);
+
+            }
+            handleChange(event) {
+                event.preventDefault()
+                this.setState({ img: event.target.value });
+                this.setState({ newImg: "" });
+                
+            }
+            onSubmit(event) {
+
+                this.setState({
+                    url: this.state.img,
+                    newImg:""
+                })
+                event.preventDefault()
+            }
+
+            render() {
+                return (
+                    <div>
+                        <form >
+                           
+                                Введите url картинки:
+                                <input
+                                    type="url" placeholder="url image" name="myImage" onChange={this.handleChange}
+                                />
+                           
+
+                            <input id="button" type="submit" value="Push" onClick={this.onSubmit} />
+                        </form>
+                        <div><img src={this.state.url} /></div>
+
+                    </div>
+                );
+
+            }
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<React.Fragment>
+            <MyInput />
+
+        </React.Fragment >)
+
+    </script>
+</body>
+
+</html>

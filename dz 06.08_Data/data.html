@@ -195,7 +195,19 @@
         text12.textContent = `_9.2.Определить какая буква в строке встречается чаще всего`;
         document.body.append(text12)
 
-
+let chars=str.split('')
+let map=new Map()
+chars.forEach(c=>{
+    if(![' ',','].includes(c)){
+if(map.has(c)){
+     
+        let n=map.get(c)
+        n++;
+        map.set(c,n)
+    }else{
+        map.set(c,1)
+    }}
+})
         console.log(newmassiv);
 
         console.log(days)
